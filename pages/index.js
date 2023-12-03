@@ -19,7 +19,7 @@ function Home() {
         cultivando um amor profundo a Deus que nos guia em cada passo. Que esta jornada seja iluminada pela luz da nossa fé, fortalecendo-nos e inspirando-nos a superar desafios com confiança e a construir um legado de amor e dedicação àquilo que acreditamos.
 
 
-        Com carinho ,
+        Com carinho 😎,
       </p>
     </div>
   );
