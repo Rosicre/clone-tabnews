@@ -1,21 +1,49 @@
 import React from "react";
-import "./UnderConstructionPage.css"; // Importe o arquivo CSS
 
 function UnderConstructionPage() {
   return (
-    <div className="under-construction-container">
-      <div className="construction-icon">&#x1F6A7;</div>
-      <h1>Página em Construção</h1>
-      <p>
+    <div style={styles.container}>
+      <div style={styles.icon}>🚧</div>
+      <h1 style={styles.title}>Página em Construção</h1>
+      <p style={styles.text}>
         Estamos trabalhando arduamente para trazer uma experiência incrível em
-        breve. Enquanto isso, agradeço sua paciência e apoio.
+        breve. Enquanto isso, agradecemos sua paciência e apoio.
       </p>
-      <div className="construction-line"></div>
-      <p className="quote">
+      <div style={styles.line}></div>
+      <p style={styles.quote}>
         "A construção do futuro está em andamento."
       </p>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    textAlign: "center",
+    padding: "50px",
+  },
+  icon: {
+    fontSize: "60px",
+    marginBottom: "20px",
+  },
+  title: {
+    fontSize: "24px",
+    margin: "10px 0",
+  },
+  text: {
+    fontSize: "16px",
+    color: "#555",
+  },
+  line: {
+    width: "100px",
+    height: "2px",
+    backgroundColor: "#3498db",
+    margin: "20px auto",
+  },
+  quote: {
+    fontStyle: "italic",
+    color: "#777",
+  },
+};
 
 export default UnderConstructionPage;
