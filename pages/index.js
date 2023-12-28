@@ -10,9 +10,7 @@ function UnderConstructionPage() {
         breve. Enquanto isso, agradecemos sua paciência e apoio.
       </p>
       <div style={styles.line}></div>
-      <p style={styles.quote}>
-        "A construção do futuro está em andamento."
-      </p>
+      <p style={styles.quote}>"A construção do futuro está em andamento."</p>
     </div>
   );
 }
