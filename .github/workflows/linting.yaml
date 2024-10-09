@@ -14,4 +14,4 @@ jobs:
           node-version: "lts/hydrogen"
       - run: npm ci
 
-      - run: npm run lint:prettier
+      - run: npm run lint:prettier:check
