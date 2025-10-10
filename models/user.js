@@ -24,7 +24,7 @@ async function findOneByUsername(username) {
     if (results.rowCount === 0) {
       throw new NotFoundError({
         message: "O username informado não foi encontrado no sistema.",
-        action: "Verifique se o username está digitado corretamente. ",
+        action: "Verifique se o username está digitado corretamente.",
       });
     }
 
@@ -38,6 +38,7 @@ async function create(userInputValues) {
   await hashPasswordInObject(userInputValues);
 
   const newUser = await runInsertQuery(userInputValues);
+  //console.log("✅ Usuário criado:", newUser); // <--- Verifica se o usuário está sendo criado corretamente
   return newUser;
 
   async function runInsertQuery(userInputValues) {
@@ -124,7 +125,7 @@ async function validateUniqueUsername(username) {
   if (results.rowCount > 0) {
     throw new ValidationError({
       message: "O username informado já está sendo utilizado.",
-      action: "Utilize outro username para realizar esta operação. ",
+      action: "Utilize outro username para realizar esta operação.",
     });
   }
 }
@@ -145,7 +146,7 @@ async function validateUniqueEmail(email) {
   if (results.rowCount > 0) {
     throw new ValidationError({
       message: "O email informado já está sendo utilizado.",
-      action: "Utilize outro email para realizar esta operação. ",
+      action: "Utilize outro email para realizar esta operação.",
     });
   }
 }
