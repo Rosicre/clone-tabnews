@@ -87,13 +87,13 @@ async function getLastEmail() {
   return lastEmailItem;
 }
 
-async function activateUser(inactiveUser) {
-  return await activation.activateUserByUserId(inactiveUser.id);
-}
-
 function extractUUID(text) {
   const match = text.match(/[0-9a-fA-F-]{36}/);
   return match ? match[0] : null;
+}
+
+async function activateUser(inactiveUser) {
+  return await activation.activateUserByUserId(inactiveUser.id);
 }
 
 const orchestrator = {
