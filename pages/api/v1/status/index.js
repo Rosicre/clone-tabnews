@@ -1,14 +1,17 @@
 import { createRouter } from "next-connect";
 import database from "infra/database.js";
 import controller from "infra/controller.js";
+import authorization from "models/authorization.js";
 
 const router = createRouter();
 
+router.use(controller.injectAnonymousOrUser);
 router.get(getHandler);
 
 export default router.handler(controller.errorHandlers);
 
 async function getHandler(request, response) {
+  const userTryingToGet = request.context.user;
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResul = await database.query("SHOW server_version;");
@@ -19,6 +22,7 @@ async function getHandler(request, response) {
   );
   const databaseMaxConnectionsValue =
     databaseMaxConnectionsResult.rows[0].max_connections;
+
   const databaseName = process.env.POSTGRES_DB;
   const databaseOpenedConnectionsResult = await database.query({
     text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
@@ -28,7 +32,7 @@ async function getHandler(request, response) {
   const databaseOpenedConnectionsValue =
     databaseOpenedConnectionsResult.rows[0].count;
 
-  response.status(200).json({
+  const statusObject = {
     updated_at: updatedAt,
     dependencies: {
       database: {
@@ -37,5 +41,13 @@ async function getHandler(request, response) {
         opened_connections: databaseOpenedConnectionsValue,
       },
     },
-  });
+  };
+
+  const secureOutputValues = authorization.filterOutput(
+    userTryingToGet,
+    "read:status",
+    statusObject,
+  );
+
+  return response.status(200).json(secureOutputValues);
 }
