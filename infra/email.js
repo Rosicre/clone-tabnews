@@ -1,4 +1,3 @@
-import { th } from "@faker-js/faker/.";
 import nodemailer from "nodemailer";
 import { ServiceError } from "./errors.js";
 
