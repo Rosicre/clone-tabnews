@@ -109,7 +109,7 @@ async function activateUserByUserId(userId) {
 
 async function sendEmailToUser(user, activationToken) {
   await email.send({
-    from: "CatharinaBoutiqueModas <rosicreferreira@gmail.com>",
+    from: "CatharinaBoutiqueModas <contato@catharinaboutiquemodas.com.br>",
     to: user.email,
     subject: "Ative seu cadastro na CatharinaBoutique!",
     text: `Olá ${user.username}, clique no link para ativar seu cadastro na CatharinaBoutique!
