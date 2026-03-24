@@ -14,9 +14,10 @@
     "services:wait:database": "node infra/scripts/wait-for-postgres.js",
     "migrations:create": "node-pg-migrate -m infra/migrations create",
     "migrations:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "migrations:up:dry": "node-pg-migrate -m infra/migrations --envPath .env.development --dry-run up",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
-    "lint:eslint:check": "next lint --dir .",
+    "lint:eslint:check": "next lint",
     "prepare": "husky",
     "commit": "cz"
   },
@@ -28,7 +29,7 @@
     "cookie": "1.0.2",
     "dotenv": "16.4.7",
     "dotenv-expand": "12.0.1",
-    "next": "^15.1.2",
+    "next": "^15.1.11",
     "next-connect": "1.0.0",
     "node-pg-migrate": "7.8.0",
     "nodemailer": "7.0.5",
@@ -58,5 +59,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "engines": {
+    "node": "24"
   }
 }
